@@ -1,20 +1,27 @@
 import React from "react";
 import Link from "next/link";
 
-function HeroPanel() {
+import { urlFor } from "../../lib/client";
+
+function HeroPanel({ bannerDate }) {
   return (
     <div className="hero-banner-container">
       <div>
-        <p className="beats-solo">SMALL TEXT</p>
-        <h3>MID TEXT</h3>
-        <img src="" alt="headphones" className="hero-banner-image" />
+        <p className="beats-solo">{bannerDate.smallText}</p>
+        <h3>{bannerDate.midText}</h3>
+        <h1> {bannerDate.largeText1} </h1>
+        <img
+          src={urlFor(bannerDate.image)}
+          alt="headphones"
+          className="hero-banner-image"
+        />
         <div>
-          <Link href="/product/ID">
-            <button type="button">BUTTON TEXT</button>
+          <Link href={`/product/${bannerDate.product}`}>
+            <button type="button"> {bannerDate.buttonText} </button>
           </Link>
           <div className="desc">
             <h5>Description</h5>
-            <p>DESCRIPTION</p>
+            <p> {bannerDate.desc} </p>
           </div>
         </div>
       </div>

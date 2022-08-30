@@ -1,6 +1,6 @@
 import React from "react";
 
-import Products from "../components/Products";
+import Product from "../components/Product";
 import FooterPanel from "../components/FooterPanel";
 import HeroPanel from "../components/HeroPanel";
 
@@ -9,15 +9,18 @@ import { client } from "../lib/client";
 const Home = ({ products, bannerDate }) => {
   return (
     <>
-      <HeroPanel />
+      <HeroPanel bannerDate={bannerDate.length && bannerDate[0]} />
+      {console.log(bannerDate)}
       <div className="products-heading">
         <h2>Best Selling Product</h2>
         <p>Speakers Of Many Variations</p>
       </div>
       <div className="products-container">
-        {products?.map((product) => product.name)}
+        {products?.map((product) => (
+          <Product key={product._id} product={product} />
+        ))}
       </div>
-      <FooterPanel />
+      <FooterPanel footerPanel={bannerDate && bannerDate[0]} />
     </>
   );
 };

@@ -4,4 +4,4 @@ function Cart() {
   return <div>Cart</div>;
 }
 
-export default cACart;
+export default Cart;
