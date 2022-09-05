@@ -377,8 +377,11 @@ span.text-red {
   position: absolute;
   bottom: 12px;
   right: 5px;
-  width: 100%;
+  width: 95%;
+  margin-left: 5%;
   padding: 30px 65px;
+  height: 145px;
+  background-color: #fff;
 }
 
 .btn-container {
