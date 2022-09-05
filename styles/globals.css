@@ -475,7 +475,7 @@ span.text-red {
 }
 .product-detail-desc .quantity {
   display: flex;
-  gap: 20px;
+  gap: 10px;
   margin-top: 10px;
   align-items: center;
 }
@@ -518,7 +518,7 @@ span.text-red {
 }
 .quantity-desc {
   border: 1px solid gray;
-  padding: 6px;
+  padding: 5px;
 }
 .quantity-desc span {
   font-size: 16px;
@@ -531,7 +531,6 @@ span.text-red {
 }
 .quantity-desc .num {
   border-right: 1px solid gray;
-  font-size: 20px;
 }
 .quantity-desc .plus {
   color: rgb(49, 168, 49);

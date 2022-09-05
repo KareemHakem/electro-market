@@ -11,7 +11,7 @@ export const StateContext = ({ children }) => {
   const [qty, setQty] = useState(1);
 
   let foundProduct;
-  let index;
+  let index;  
 
   // Add product To cart //
   const onAdd = (product, quantity) => {
