@@ -23,6 +23,8 @@ function Cart() {
     toggleCartItemQuantity,
     onRemove,
   } = useStateContext();
+
+  console.log(cartItems, "cartItems");
   return (
     <div className="cart-wrapper" ref={cartRef}>
       <div className="cart-container">

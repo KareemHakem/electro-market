@@ -10,9 +10,6 @@ export const StateContext = ({ children }) => {
   const [totalQuantities, setTotalQuantities] = useState(0);
   const [qty, setQty] = useState(1);
 
-  let foundProduct;
-  let index;  
-
   // Add product To cart //
   const onAdd = (product, quantity) => {
     const checkProductInCart = cartItems.find(
@@ -40,19 +37,17 @@ export const StateContext = ({ children }) => {
       setCartItems([...cartItems, { ...product }]);
     }
 
-    toast.success(`${qty} ${product.name} added to the cart`);
+    toast.success(`${qty} ${product.name} added to the cart.`);
   };
   ////////////////////////////////////////////////////////////////////////////////////////////////
-  // add cart product in cart
-
+  // add cart product in quantity buttons cart
   const toggleCartItemQuantity = (id, value) => {
-    foundProduct = cartItems.find((item) => item._id === id);
-    index = cartItems.findIndex((product) => product._id === id);
-    const nweCartItem = cartItems.filter((item) => item._id !== id);
+    let foundProduct = cartItems.find((item) => item._id === id);
+    const newCartItem = cartItems.filter((item) => item._id !== id);
 
     if (value === "inc") {
       setCartItems([
-        ...nweCartItem,
+        ...newCartItem,
         { ...foundProduct, quantity: foundProduct.quantity + 1 },
       ]);
 
@@ -61,11 +56,8 @@ export const StateContext = ({ children }) => {
     } else if (value === "dec") {
       if (foundProduct.quantity > 1) {
         setCartItems([
-          ...nweCartItem,
-          {
-            ...foundProduct,
-            quantity: foundProduct.quantity - 1,
-          },
+          ...newCartItem,
+          { ...foundProduct, quantity: foundProduct.quantity - 1 },
         ]);
 
         setTotalPrice((prevTotalPrice) => prevTotalPrice - foundProduct.price);
@@ -73,12 +65,11 @@ export const StateContext = ({ children }) => {
       }
     }
   };
-
   /////////////////////////////////////////////////////////////////////////////////////////////////
-
+  //// remove products from cart
   const onRemove = (product) => {
-    foundProduct = cartItems.find((item) => item._id === product._id);
-    const nweCartItem = cartItems.filter((item) => item._id !== product._id);
+    let foundProduct = cartItems.find((item) => item._id === product._id);
+    const newCartItem = cartItems.filter((item) => item._id !== product._id);
 
     setTotalPrice(
       (prevTotalPrice) =>
@@ -89,7 +80,7 @@ export const StateContext = ({ children }) => {
       (prevTotalQuantities) => prevTotalQuantities - foundProduct.quantity
     );
 
-    setCartItems(nweCartItem);
+    setCartItems(newCartItem);
   };
 
   ///////////////////////////////////////////////////////////////////////////////////////////////
