@@ -9,13 +9,12 @@ export const StateContext = ({ children }) => {
   const [totalPrice, setTotalPrice] = useState(0);
   const [totalQuantities, setTotalQuantities] = useState(0);
   const [qty, setQty] = useState(1);
-
+  ////////////////////////////////////////////////////////////////////////////////////////////////
   // Add product To cart //
   const onAdd = (product, quantity) => {
     const checkProductInCart = cartItems.find(
       (item) => item._id === product._id
     );
-
     setTotalPrice(
       (prevTotalPrice) => prevTotalPrice + product.price * quantity
     );
@@ -40,7 +39,7 @@ export const StateContext = ({ children }) => {
     toast.success(`${qty} ${product.name} added to the cart.`);
   };
   ////////////////////////////////////////////////////////////////////////////////////////////////
-  // add cart product in quantity buttons cart
+  // add cart product in quantity buttons cart//
   const toggleCartItemQuantity = (id, value) => {
     let foundProduct = cartItems.find((item) => item._id === id);
     const newCartItem = cartItems.filter((item) => item._id !== id);
@@ -65,8 +64,8 @@ export const StateContext = ({ children }) => {
       }
     }
   };
-  /////////////////////////////////////////////////////////////////////////////////////////////////
-  //// remove products from cart
+  ////////////////////////////////////////////////////////////////////////////////////////////////
+  // remove products from cart//
   const onRemove = (product) => {
     let foundProduct = cartItems.find((item) => item._id === product._id);
     const newCartItem = cartItems.filter((item) => item._id !== product._id);
@@ -83,7 +82,7 @@ export const StateContext = ({ children }) => {
     setCartItems(newCartItem);
   };
 
-  ///////////////////////////////////////////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////////////////////////////////////////
   // increments the product Qyt //
   const incQty = () => {
     setQty((prevQty) => prevQty + 1);
@@ -96,7 +95,7 @@ export const StateContext = ({ children }) => {
       return prevQty - 1;
     });
   };
-  //////////////////////////////////////////////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////////////////////////////////////////
 
   return (
     <Context.Provider
@@ -113,6 +112,10 @@ export const StateContext = ({ children }) => {
         onAdd,
         toggleCartItemQuantity,
         onRemove,
+        setCartItems,
+        
+        setTotalPrice,
+        setTotalQuantities,
       }}
     >
       {children}
